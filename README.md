@@ -11,3 +11,4 @@ RZDoom is fully compatible with all your ZDoom wads, mods, audio etc..  it is on
 4. Launcher is improved with more options
 5. FMOD Studio is the only audio backend (no more OpenAL) and has been rewritten to be compatible with the absolute latest version of FMOD Studio (as of now in August 2024)
 6. Is officially supported by the Brutal Doom Community Expansion team.
+7. UMAPINFO support.
