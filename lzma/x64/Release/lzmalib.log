@@ -1,0 +1,22 @@
+﻿  7zArcIn.c
+  7zBuf.c
+  7zCrc.c
+  7zCrcOpt.c
+  7zDec.c
+  7zStream.c
+  Bcj2.c
+  Bra.c
+  Bra86.c
+  BraIA64.c
+  CpuArch.c
+  Delta.c
+  LzFind.c
+  LzFindMt.c
+  Lzma2Dec.c
+  LzmaDec.c
+  LzmaEnc.c
+  Ppmd7.c
+  Ppmd7Dec.c
+  Threads.c
+  Generating Code...
+  lzmalib.vcxproj -> D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\x64\Release\lzmalib.lib

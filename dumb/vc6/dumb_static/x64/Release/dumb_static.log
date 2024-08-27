@@ -1,0 +1,113 @@
+﻿  atexit.c
+  duhlen.c
+  duhtag.c
+  dumbfile.c
+  loadduh.c
+  makeduh.c
+  rawsig.c
+  readduh.c
+  register.c
+  rendduh.c
+  rendsig.c
+  unload.c
+  barray.c
+  clickrem.c
+  lpc.c
+  memfile.c
+  resample.c
+  resampler.c
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(60,27): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(117,51): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(117,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(101,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(108,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(314,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(316,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(350,27): warning C4244: '/=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(349,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(405,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(468,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(434,48): warning C4244: 'initializing': conversion from 'const float' to 'const int', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(659,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(727,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(732,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(690,48): warning C4244: 'initializing': conversion from 'const float' to 'const int', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(962,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(1124,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\src\helpers\resampler.c(1370,47): warning C4244: '+=': conversion from '__int64' to 'int', possible loss of data
+  riff.c
+  sampbuf.c
+  Generating Code...
+  Compiling...
+  silence.c
+  stdfile.c
+  itload.c
+  itload2.c
+  itmisc.c
+  itorder.c
+  itread.c
+  itread2.c
+  itrender.c
+  itunload.c
+  load669.c
+  load6692.c
+  loadamf.c
+  loadamf2.c
+  loadany.c
+  loadany2.c
+  loadasy.c
+  loadasy2.c
+  loadmod.c
+  loadmod2.c
+  Generating Code...
+  Compiling...
+  loadmtm.c
+  loadmtm2.c
+  loadokt.c
+  loadokt2.c
+  loadoldpsm.c
+  loadoldpsm2.c
+  loadpsm.c
+  loadpsm2.c
+  loadptm.c
+  loadptm2.c
+  loadriff.c
+  loadriff2.c
+  loads3m.c
+  loads3m2.c
+  loadstm.c
+  loadstm2.c
+  loadxm.c
+  loadxm2.c
+  ptmeffect.c
+  read669.c
+  Generating Code...
+  Compiling...
+  read6692.c
+  readam.c
+  readamf.c
+  readamf2.c
+  readany.c
+  readany2.c
+  readasy.c
+  readdsmf.c
+  readmod.c
+  readmod2.c
+  readmtm.c
+  readokt.c
+  readokt2.c
+  readoldpsm.c
+  readpsm.c
+  readptm.c
+  readriff.c
+  reads3m.c
+  reads3m2.c
+  readstm.c
+  Generating Code...
+  Compiling...
+  readstm2.c
+  readxm.c
+  readxm2.c
+  xmeffect.c
+  Generating Code...
+  dumb_static.vcxproj -> D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\dumb\vc6\dumb_static\x64\Release\dumb_static.lib

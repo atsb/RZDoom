@@ -1,0 +1,32 @@
+﻿  actions.cc
+  code.cc
+  dfa.cc
+  main.cc
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\stream_lc.h(285,35): warning C4244: 'argument': conversion from 'std::streamsize' to 'size_t', possible loss of data
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\stream_lc.h(270,26): message : while compiling class template member function 'std::streamsize re2c::basic_filebuf_lc<char,std::char_traits<char>>::xsputn(const _E *,std::streamsize)'
+          with
+          [
+              _E=char
+          ]
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\stream_lc.h(359,1): message : see reference to class template instantiation 're2c::basic_filebuf_lc<char,std::char_traits<char>>' being compiled
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\stream_lc.h(357,7): message : while compiling class template member function 're2c::uint re2c::basic_fstream_lc<_E,std::basic_ostream<char,std::char_traits<char>>,2,_Tr>::get_line(void) const'
+          with
+          [
+              _E=char,
+              _Tr=std::char_traits<char>
+          ]
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\stream_lc.h(368,11): message : see reference to class template instantiation 're2c::basic_fstream_lc<_E,std::basic_ostream<char,std::char_traits<char>>,2,_Tr>' being compiled
+          with
+          [
+              _E=char,
+              _Tr=std::char_traits<char>
+          ]
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\main.cc(310,20): message : see reference to class template instantiation 're2c::basic_ofstream_lc<char,std::char_traits<char>>' being compiled
+  mbo_getopt.cc
+  parser.cc
+  scanner.cc
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\scanner.cc(69,23): warning C4244: '=': conversion from 'std::streamsize' to 're2c::uint', possible loss of data
+  substr.cc
+  translate.cc
+  Generating Code...
+  re2c.vcxproj -> D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\re2c\re2c.exe

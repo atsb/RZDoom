@@ -1,0 +1,2 @@
+C:\Users\Ad4m\Downloads\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\zlib\x64\Release\zlib.lib
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\zlib\x64\Release\zlib.lib

@@ -1,0 +1,6 @@
+﻿  updaterevision.c
+  Generating code
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
+  All 5 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  updaterevision.vcxproj -> D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\x64\Release\updaterevision.exe

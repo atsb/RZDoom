@@ -1,0 +1,6 @@
+﻿  zipdir.c
+  bzip2.lib(bzlib.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+  Generating code
+  Finished generating code
+  zipdir.vcxproj -> D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\tools\zipdir\x64\Release\zipdir.exe
+          1 file(s) copied.

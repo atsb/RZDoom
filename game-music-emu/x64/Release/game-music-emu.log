@@ -1,0 +1,54 @@
+﻿  Ay_Apu.cpp
+  Ay_Cpu.cpp
+  Ay_Emu.cpp
+  Blip_Buffer.cpp
+  Classic_Emu.cpp
+  Data_Reader.cpp
+  Dual_Resampler.cpp
+  Effects_Buffer.cpp
+  Fir_Resampler.cpp
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\game-music-emu\gme\Fir_Resampler.cpp(159,19): warning C4244: 'initializing': conversion from '__int64' to 'long', possible loss of data
+  Gbs_Emu.cpp
+  Gb_Apu.cpp
+  Gb_Cpu.cpp
+  Gb_Oscs.cpp
+  gme.cpp
+  Gme_File.cpp
+  Gym_Emu.cpp
+  Hes_Apu.cpp
+  Hes_Cpu.cpp
+  Hes_Emu.cpp
+  Kss_Cpu.cpp
+  Generating Code...
+  Compiling...
+  Kss_Emu.cpp
+  Kss_Scc_Apu.cpp
+  M3u_Playlist.cpp
+  Multi_Buffer.cpp
+  Music_Emu.cpp
+D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\game-music-emu\gme\Music_Emu.cpp(309,14): warning C4244: 'return': conversion from '__int64' to 'long', possible loss of data
+  Nes_Apu.cpp
+  Nes_Cpu.cpp
+  Nes_Fme7_Apu.cpp
+  Nes_Namco_Apu.cpp
+  Nes_Oscs.cpp
+  Nes_Vrc6_Apu.cpp
+  Nsfe_Emu.cpp
+  Nsf_Emu.cpp
+  Sap_Apu.cpp
+  Sap_Cpu.cpp
+  Sap_Emu.cpp
+  Sms_Apu.cpp
+  Snes_Spc.cpp
+  Spc_Cpu.cpp
+  Spc_Dsp.cpp
+  Generating Code...
+  Compiling...
+  Spc_Emu.cpp
+  Spc_Filter.cpp
+  Vgm_Emu.cpp
+  Vgm_Emu_Impl.cpp
+  Ym2413_Emu.cpp
+  Ym2612_Emu.cpp
+  Generating Code...
+  game-music-emu.vcxproj -> D:\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\rzdoom-code-2a112fe183adf742b5df35ea841111334cb28d96\x64\Release\game-music-emu.lib
