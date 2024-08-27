@@ -67,9 +67,6 @@
     <Filter Include="Audio Files\WildMidi\Source">
       <UniqueIdentifier>{69cac6e6-3bef-4e24-aaff-d4702932a67f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDL Files">
-      <UniqueIdentifier>{1a4fc2ba-5829-4ae5-955e-0165fec3878b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Xlat">
       <UniqueIdentifier>{f1d15e30-ce2e-4981-bf9b-aa7f683cfb55}</UniqueIdentifier>
     </Filter>
@@ -120,9 +117,6 @@
     </Filter>
     <Filter Include="Render Interface">
       <UniqueIdentifier>{25c3b363-0b2b-4519-92bd-66746a8a1575}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SDL2">
-      <UniqueIdentifier>{b9b2dfb7-08c8-41b4-bbbb-d38338249de7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -873,33 +867,6 @@
     <ClCompile Include="src\wildmidi\wm_error.cpp">
       <Filter>Audio Files\WildMidi\Source</Filter>
     </ClCompile>
-    <ClCompile Include="src\sdl\crashcatcher.c">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\hardware.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\i_cd.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\i_input.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\i_main.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\i_movie.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\i_system.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\sdlvideo.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sdl\st_start.cpp">
-      <Filter>SDL Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\xlat\parse_xlat.cpp">
       <Filter>Xlat</Filter>
     </ClCompile>
@@ -1388,45 +1355,6 @@
     </ClCompile>
     <ClCompile Include="src\umapinfo.cpp">
       <Filter>!Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\critsec.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\hardware.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\i_gui.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\i_input.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\i_joystick.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\i_main.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\i_system.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\i_timer.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\sdlvideo.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\sdl\st_start.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\i_cd.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\i_movie.cpp">
-      <Filter>SDL2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\posix\i_steam.cpp">
-      <Filter>SDL2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1958,9 +1886,6 @@
     <ClInclude Include="src\wildmidi\wm_error.h">
       <Filter>Audio Files\WildMidi\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="src\sdl\critsec.h">
-      <Filter>SDL Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\xlat\xlat.h">
       <Filter>Xlat</Filter>
     </ClInclude>
@@ -2099,24 +2024,6 @@
     <ClInclude Include="src\win32\win32iface.h">
       <Filter>Win32 Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\posix\sdl\critsec.h">
-      <Filter>SDL2</Filter>
-    </ClInclude>
-    <ClInclude Include="src\posix\sdl\sdlvideo.h">
-      <Filter>SDL2</Filter>
-    </ClInclude>
-    <ClInclude Include="src\posix\dikeys.h">
-      <Filter>SDL2</Filter>
-    </ClInclude>
-    <ClInclude Include="src\posix\hardware.h">
-      <Filter>SDL2</Filter>
-    </ClInclude>
-    <ClInclude Include="src\posix\i_input.h">
-      <Filter>SDL2</Filter>
-    </ClInclude>
-    <ClInclude Include="src\posix\i_system.h">
-      <Filter>SDL2</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\win32\cursor1.cur">
@@ -2213,24 +2120,6 @@
   <ItemGroup>
     <CustomBuild Include="src\sc_man_scanner.re">
       <Filter>!Source Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\sdl\dikeys.h">
-      <Filter>SDL Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\sdl\hardware.h">
-      <Filter>SDL Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\sdl\i_input.h">
-      <Filter>SDL Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\sdl\i_system.h">
-      <Filter>SDL Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\sdl\i_video.h">
-      <Filter>SDL Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\sdl\sdlvideo.h">
-      <Filter>SDL Files</Filter>
     </CustomBuild>
     <CustomBuild Include="src\xlat\xlat_parser.y">
       <Filter>Xlat</Filter>
