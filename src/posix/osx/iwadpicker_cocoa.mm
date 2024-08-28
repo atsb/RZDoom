@@ -198,50 +198,53 @@ static NSArray* GetKnownExtensions()
 	[app stopModal];
 }
 
-- (void)browseButtonPressed:(id) sender
+- (void)browseButtonPressed:(id)sender
 {
-	NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowsMultipleSelection:YES];
-	[openPanel setCanChooseFiles:YES];
-	[openPanel setCanChooseDirectories:YES];
-	[openPanel setResolvesAliases:YES];
-	[openPanel setAllowedFileTypes:GetKnownExtensions()];
+    NSOpenPanel* openPanel = [NSOpenPanel openPanel];
+    [openPanel setAllowsMultipleSelection:YES];
+    [openPanel setCanChooseFiles:YES];
+    [openPanel setCanChooseDirectories:YES];
+    [openPanel setResolvesAliases:YES];
+    [openPanel setAllowedFileTypes:GetKnownExtensions()];
 
-	if (NSOKButton == [openPanel runModal])
-	{
-		NSArray* files = [openPanel URLs];
-		NSMutableString* parameters = [NSMutableString string];
+    if (NSModalResponseOK == [openPanel runModal])
+    {
+        NSArray* files = [openPanel URLs];
+        NSMutableString* parameters = [NSMutableString string];
 
-		for (NSUInteger i = 0, ei = [files count]; i < ei; ++i)
-		{
-			NSString* filePath = [[files objectAtIndex:i] path];
-			BOOL isDirectory = false;
+        for (NSURL* fileURL in files)
+        {
+            NSString* filePath = [fileURL path];
+            BOOL isDirectory = NO;
 
-			if ([[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory] && isDirectory)
-			{
-				[parameters appendFormat:@"-file \"%@\" ", filePath];
-			}
-			else
-			{
-				[parameters appendKnownFileType:filePath];
-			}
-		}
+            if ([[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory])
+            {
+                if (isDirectory)
+                {
+                    [parameters appendFormat:@"-file \"%@\" ", filePath];
+                }
+                else
+                {
+                    [parameters appendKnownFileType:filePath];
+                }
+            }
+        }
+        if ([parameters length] > 0)
+        {
+            NSString* newParameters = [parametersTextField stringValue];
+            newParameters = [newParameters stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
-		if ([parameters length] > 0)
-		{
-			NSString* newParameters = [parametersTextField stringValue];
+            if ([newParameters length] > 0 && ![newParameters hasSuffix:@" "])
+            {
+                newParameters = [newParameters stringByAppendingString:@" "];
+            }
+            newParameters = [newParameters stringByAppendingString:parameters];
 
-			if ([newParameters length] > 0
-				&& NO == [newParameters hasSuffix:@" "])
-			{
-				newParameters = [newParameters stringByAppendingString:@" "];
-			}
-
-			newParameters = [newParameters stringByAppendingString:parameters];
-
-			[parametersTextField setStringValue: newParameters];
-		}
-	}
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [parametersTextField setStringValue:newParameters];
+            });
+        }
+    }
 }
 
 - (void)doubleClicked:(id) sender
@@ -315,13 +318,6 @@ static NSArray* GetKnownExtensions()
 	[parametersTextField setStringValue:[NSString stringWithUTF8String:osx_additional_parameters]];
 	[[window contentView] addSubview:parametersTextField];
 
-	// Doesn't look like the SDL version implements this so lets not show it.
-	/*NSButton *dontAsk = [[NSButton alloc] initWithFrame:NSMakeRect(18, 18, 178, 18)];
-	[dontAsk setTitle:[NSString stringWithCString:"Don't ask me this again"]];
-	[dontAsk setButtonType:NSSwitchButton];
-	[dontAsk setState:(showwin ? NSOffState : NSOnState)];
-	[[window contentView] addSubview:dontAsk];*/
-
 	okButton = [[NSButton alloc] initWithFrame:NSMakeRect(236, 8, 96, 32)];
 	[okButton setTitle:@"OK"];
 	[okButton setBezelStyle:NSRoundedBezelStyle];
@@ -382,48 +378,19 @@ static NSArray* GetKnownExtensions()
 
 EXTERN_CVAR(String, defaultiwad)
 
-static NSString* GetArchitectureString()
-{
-#ifdef __i386__
-	return @"i386";
-#elif defined __x86_64__
-	return @"x86_64";
-#elif defined __ppc__
-	return @"ppc";
-#elif defined __ppc64__
-	return @"ppc64";
-#endif
-}
-
 static void RestartWithParameters(const char* iwadPath, NSString* parameters)
 {
 	assert(nil != parameters);
-
 	defaultiwad = ExtractFileBase(iwadPath);
-
 	GameConfig->DoGameSetup("Doom");
 	M_SaveDefaults(NULL);
 
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
+    
 	@try
 	{
 		NSString* executablePath = [NSString stringWithUTF8String:Args->GetArg(0)];
-
 		NSMutableArray* const arguments = [[NSMutableArray alloc] init];
-
-		// The following value shoud be equal to NSAppKitVersionNumber10_5
-		// It's hard-coded in order to build with earlier SDKs
-		const bool canSelectArchitecture = NSAppKitVersionNumber >= 949;
-
-		if (canSelectArchitecture)
-		{
-			[arguments addObject:@"-arch"];
-			[arguments addObject:GetArchitectureString()];
-			[arguments addObject:executablePath];
-
-			executablePath = @"/usr/bin/arch";
-		}
 
 		[arguments addObject:@"-wad_picker_restart"];
 		[arguments addObject:@"-iwad"];
@@ -434,7 +401,6 @@ static void RestartWithParameters(const char* iwadPath, NSString* parameters)
 			NSString* currentParameter = [NSString stringWithUTF8String:Args->GetArg(i)];
 			[arguments addObject:currentParameter];
 		}
-
 		wordexp_t expansion = {};
 
 		if (0 == wordexp([parameters UTF8String], &expansion, 0))
@@ -442,23 +408,19 @@ static void RestartWithParameters(const char* iwadPath, NSString* parameters)
 			for (size_t i = 0; i < expansion.we_wordc; ++i)
 			{
 				NSString* argumentString = [NSString stringWithCString:expansion.we_wordv[i]
-															  encoding:NSUTF8StringEncoding];
+                    encoding:NSUTF8StringEncoding];
 				[arguments addObject:argumentString];
 			}
-
 			wordfree(&expansion);
 		}
-
 		[NSTask launchedTaskWithLaunchPath:executablePath
 								 arguments:arguments];
-
-		_exit(0); // to avoid atexit()'s functions
+		_exit(0);
 	}
 	@catch (NSException* e)
 	{
 		NSLog(@"Cannot restart: %@", [e reason]);
 	}
-
 	[pool release];
 }
 

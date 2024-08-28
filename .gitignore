@@ -36,3 +36,4 @@
 *.pdb
 *.log
 *.tlog
+/build
