@@ -1035,32 +1035,6 @@ void FPaletteTester::MakeTexture()
 
 //==========================================================================
 //
-// DFrameBuffer :: CopyFromBuff
-//
-// Copies pixels from main memory to video memory. This is only used by
-// DDrawFB.
-//
-//==========================================================================
-
-void DFrameBuffer::CopyFromBuff (BYTE *src, int srcPitch, int width, int height, BYTE *dest)
-{
-	if (Pitch == width && Pitch == Width && srcPitch == width)
-	{
-		memcpy (dest, src, Width * Height);
-	}
-	else
-	{
-		for (int y = 0; y < height; y++)
-		{
-			memcpy (dest, src, width);
-			dest += Pitch;
-			src += srcPitch;
-		}
-	}
-}
-
-//==========================================================================
-//
 // DFrameBuffer :: SetVSync
 //
 // Turns vertical sync on and off, if supported.

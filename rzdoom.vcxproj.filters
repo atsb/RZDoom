@@ -1350,9 +1350,6 @@
     <ClCompile Include="src\win32\win32video.cpp">
       <Filter>Win32 Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\win32\fb_ddraw.cpp">
-      <Filter>Win32 Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\umapinfo.cpp">
       <Filter>!Source Files</Filter>
     </ClCompile>

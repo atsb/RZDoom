@@ -189,8 +189,6 @@ EXTERN_CVAR (Int, vid_refreshrate)
 
 extern IDirect3D9 *D3D;
 
-extern cycle_t BlitCycles;
-
 // PRIVATE DATA DEFINITIONS ------------------------------------------------
 
 const char *const D3DFB::ShaderNames[D3DFB::NUM_SHADERS] =
@@ -1152,9 +1150,6 @@ void D3DFB::Update ()
 		UploadPalette();
 	}
 
-	BlitCycles.Reset();
-	BlitCycles.Clock();
-
 	LockCount = 0;
 	HRESULT hr = D3DDevice->TestCooperativeLevel();
 	if (FAILED(hr) && (hr != D3DERR_DEVICENOTRESET || !Reset()))
@@ -1167,9 +1162,6 @@ void D3DFB::Update ()
 	{
 		Flip();
 	}
-
-	BlitCycles.Unclock();
-	//LOG1 ("cycles = %d\n", BlitCycles);
 
 	Buffer = NULL;
 	UpdatePending = false;

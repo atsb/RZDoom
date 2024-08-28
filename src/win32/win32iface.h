@@ -113,7 +113,6 @@ class Win32Video : public IVideo
 	void AddLetterboxModes ();
 	void ScaleModes (int doubling);
 
-	friend class DDrawFB;
 	friend class D3DFB;
 };
 
@@ -138,88 +137,6 @@ protected:
 	friend class Win32Video;
 
 	BaseWinFB() {}
-};
-
-class DDrawFB : public BaseWinFB
-{
-	DECLARE_CLASS(DDrawFB, BaseWinFB)
-public:
-	DDrawFB (int width, int height, bool fullscreen);
-	~DDrawFB ();
-
-	bool IsValid ();
-	bool Lock (bool buffer);
-	void Unlock ();
-	void ForceBuffering (bool force);
-	void Update ();
-	PalEntry *GetPalette ();
-	void GetFlashedPalette (PalEntry pal[256]);
-	void UpdatePalette ();
-	bool SetGamma (float gamma);
-	bool SetFlash (PalEntry rgb, int amount);
-	void GetFlash (PalEntry &rgb, int &amount);
-	int GetPageCount ();
-	int QueryNewPalette ();
-	void PaletteChanged ();
-	void SetVSync (bool vsync);
-	void NewRefreshRate();
-	HRESULT GetHR ();
-	virtual int GetTrueHeight() { return TrueHeight; }
-	bool Is8BitMode();
-
-	void Blank ();
-	bool PaintToWindow ();
-
-private:
-	enum LockSurfRes { NoGood, Good, GoodWasLost };
-	
-	bool CreateResources ();
-	void ReleaseResources ();
-	bool CreateSurfacesAttached ();
-	bool CreateSurfacesComplex ();
-	bool CreateBlitterSource ();
-	LockSurfRes LockSurf (LPRECT lockrect, LPDIRECTDRAWSURFACE surf);
-	void RebuildColorTable ();
-	void MaybeCreatePalette ();
-	bool AddBackBuf (LPDIRECTDRAWSURFACE *surface, int num);
-	HRESULT AttemptRestore ();
-
-	HRESULT LastHR;
-	BYTE GammaTable[3][256];
-	PalEntry SourcePalette[256];
-	PALETTEENTRY PalEntries[256];
-	DWORD FlipFlags;
-
-	LPDIRECTDRAWPALETTE Palette;
-	LPDIRECTDRAWSURFACE PrimarySurf;
-	LPDIRECTDRAWSURFACE BackSurf;
-	LPDIRECTDRAWSURFACE BackSurf2;
-	LPDIRECTDRAWSURFACE BlitSurf;
-	LPDIRECTDRAWSURFACE LockingSurf;
-	LPDIRECTDRAWCLIPPER Clipper;
-	HPALETTE GDIPalette;
-	DWORD ClipSize;
-	PalEntry Flash;
-	int FlashAmount;
-	int BufferCount;
-	int BufferPitch;
-	int TrueHeight;
-	int PixelDoubling;
-	float Gamma;
-
-	bool NeedGammaUpdate;
-	bool NeedPalUpdate;
-	bool NeedResRecreate;
-	bool PaletteChangeExpected;
-	bool MustBuffer;		// The screen is not 8-bit, or there is no backbuffer
-	bool BufferingNow;		// Most recent Lock was buffered
-	bool WasBuffering;		// Second most recent Lock was buffered
-	bool Write8bit;
-	bool UpdatePending;		// On final unlock, call Update()
-	bool UseBlitter;		// Use blitter to copy from sys mem to video mem
-	bool UsePfx;
-
-	DDrawFB() {}
 };
 
 class D3DFB : public BaseWinFB

@@ -660,10 +660,6 @@ DFrameBuffer *Win32Video::CreateFrameBuffer (int width, int height, bool fullscr
 	{
 		fb = new D3DFB (m_Adapter, width, height, fullscreen);
 	}
-	else
-	{
-		fb = new DDrawFB (width, height, fullscreen);
-	}
 	LOG1 ("New fb created @ %p\n", fb);
 
 	// If we could not create the framebuffer, try again with slightly
@@ -722,7 +718,7 @@ DFrameBuffer *Win32Video::CreateFrameBuffer (int width, int height, bool fullscr
 		}
 
 		++retry;
-		fb = static_cast<DDrawFB *>(CreateFrameBuffer (width, height, fullscreen, NULL));
+		fb = static_cast<D3DFB*>(CreateFrameBuffer (width, height, fullscreen, NULL));
 	}
 	retry = 0;
 
