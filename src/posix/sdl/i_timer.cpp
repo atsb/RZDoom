@@ -28,14 +28,14 @@ void I_SelectTimer();
 // [RH] Returns time in milliseconds
 unsigned int I_MSTime (void)
 {
-	unsigned int time = SDL_GetTicks ();
+	unsigned int time = SDL_GetTicks64 ();
 	return time - BaseTime;
 }
 
 // Exactly the same thing, but based does no modification to the time.
 unsigned int I_FPSTime()
 {
-	return SDL_GetTicks();
+	return SDL_GetTicks64();
 }
 
 //
@@ -55,7 +55,7 @@ int I_GetTimePolled (bool saveMS)
 		return TicFrozen;
 	}
 
-	DWORD tm = SDL_GetTicks();
+	DWORD tm = SDL_GetTicks64();
 
 	if (saveMS)
 	{
@@ -138,7 +138,7 @@ void I_HandleAlarm (int sig)
 {
 	if(!TicFrozen)
 		tics++;
-	sig_start = SDL_GetTicks();
+	sig_start = SDL_GetTicks64();
 	SEMAPHORE_SIGNAL(timerWait)
 }
 
@@ -180,7 +180,7 @@ void I_SelectTimer()
 // Returns the fractional amount of a tic passed since the most recent tic
 fixed_t I_GetTimeFrac (uint32 *ms)
 {
-	DWORD now = SDL_GetTicks ();
+	DWORD now = SDL_GetTicks64 ();
 	if (ms) *ms = TicStart + (1000 / TICRATE);
 	if (TicStart == 0)
 	{
