@@ -693,10 +693,10 @@ int FWadCollection::GetLumpFlags (int lump)
 //
 //==========================================================================
 
-DWORD FWadCollection::LumpNameHash (const char *s)
+QWORD FWadCollection::LumpNameHash (const char *s)
 {
-	const DWORD *table = GetCRCTable ();;
-	DWORD hash = 0xffffffff;
+	const QWORD *table = GetCRCTable ();;
+    QWORD hash = 0xffffffff;
 	int i;
 
 	for (i = 8; i > 0 && *s; --i, ++s)

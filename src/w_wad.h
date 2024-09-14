@@ -194,7 +194,7 @@ public:
 	int FindLumpMulti (const char **names, int *lastlump, bool anyns = false, int *nameindex = NULL); // same with multiple possible names
 	bool CheckLumpName (int lump, const char *name);	// [RH] True if lump's name == name
 
-	static DWORD LumpNameHash (const char *name);		// [RH] Create hash key from an 8-char name
+	static QWORD LumpNameHash (const char *name);		// [RH] Create hash key from an 8-char name
 
 	int LumpLength (int lump) const;
 	int GetLumpOffset (int lump);					// [RH] Returns offset of lump in the wadfile

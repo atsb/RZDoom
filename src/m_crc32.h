@@ -37,16 +37,16 @@
 
 // zlib includes some CRC32 stuff, so just use that
 
-inline const DWORD *GetCRCTable () { return (const DWORD *)get_crc_table(); }
-inline DWORD CalcCRC32 (const BYTE *buf, unsigned int len)
+inline const QWORD *GetCRCTable () { return (const QWORD *)get_crc_table(); }
+inline QWORD CalcCRC32 (const BYTE *buf, unsigned int len)
 {
 	return crc32 (0, buf, len);
 }
-inline DWORD AddCRC32 (DWORD crc, const BYTE *buf, unsigned int len)
+inline QWORD AddCRC32 (QWORD crc, const BYTE *buf, unsigned int len)
 {
 	return crc32 (crc, buf, len);
 }
-inline DWORD CRC1 (DWORD crc, const BYTE c, const DWORD *crcTable)
+inline QWORD CRC1 (QWORD crc, const BYTE c, const QWORD *crcTable)
 {
 	return crcTable[(crc & 0xff) ^ c] ^ (crc >> 8);
 }
