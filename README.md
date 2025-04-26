@@ -2,6 +2,8 @@
 
 The ZDoom you know and love, only better.  ZDoom isn't really dead, despite what the GZ Team say.
 
+NOTE: 26.04.2025 - The future of RZDoom will be an SDL3 graphical backend for all systems.  This requires me to remove all Windows-specific code and rewrite those into cross-platform 'code once for all'.  I will prioritise posix systems first, then fix Windows after.  Changes incoming!
+
 RZDoom is fully compatible with all your ZDoom wads, mods, audio etc..  it is only better in every-possible-way.
 
 1. Fully compatible and buildable on Windows, Linux, macOS, BSD..  on x86, x64 and all ARM cpu's (everything that FMOD Studio is compatible with).
