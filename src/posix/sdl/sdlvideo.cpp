@@ -374,7 +374,7 @@ SDLFB::SDLFB (int width, int height, bool fullscreen, SDL_Window *oldwin)
 
 		Screen = SDL_CreateWindow (caption,
 			SDL_WINDOWPOS_UNDEFINED_DISPLAY(vid_adapter), SDL_WINDOWPOS_UNDEFINED_DISPLAY(vid_adapter),
-			width, height, (fullscreen ? SDL_WINDOW_FULLSCREEN : 0)|SDL_WINDOW_RESIZABLE);
+			(fullscreen ? SDL_WINDOW_FULLSCREEN : 0)|SDL_WINDOW_RESIZABLE);
 
 		if (Screen == NULL)
 			return;
@@ -514,7 +514,7 @@ void SDLFB::Update ()
 
 		SDLFlipCycles.Clock();
 		SDL_RenderClear(Renderer);
-		SDL_RenderCopy(Renderer, Texture, NULL, NULL);
+		SDL_RenderTexture(Renderer, Texture, NULL, NULL);
 		SDL_RenderPresent(Renderer);
 		SDLFlipCycles.Unclock();
 	}
@@ -582,7 +582,7 @@ void SDLFB::UpdateColors ()
 				256, GammaTable[2][Flash.b], GammaTable[1][Flash.g], GammaTable[0][Flash.r],
 				FlashAmount);
 		}
-		SDL_SetPaletteColors (Surface->format->palette, colors, 0, 256);
+		//SDL_SetPaletteColors (Surface->format->palette, colors, 0, 256); FIXME ADAM
 	}
 }
 
@@ -659,19 +659,18 @@ void SDLFB::ResetSDLRenderer ()
 	UsingRenderer = !vid_forcesurface;
 	if (UsingRenderer)
 	{
-		Renderer = SDL_CreateRenderer (Screen, -1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_TARGETTEXTURE|
-										(vid_vsync ? SDL_RENDERER_PRESENTVSYNC : 0));
+		Renderer = SDL_CreateRenderer (Screen, "RZDoom SDL3");
 		if (!Renderer)
 			return;
 
 		SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 255);
 
-		Uint32 fmt;
+		SDL_PixelFormat fmt;
 		switch(vid_displaybits)
 		{
 			default: fmt = SDL_PIXELFORMAT_ARGB8888; break;
 			case 30: fmt = SDL_PIXELFORMAT_ARGB2101010; break;
-			case 24: fmt = SDL_PIXELFORMAT_RGB888; break;
+			case 24: fmt = SDL_PIXELFORMAT_XRGB8888; break;
 			case 16: fmt = SDL_PIXELFORMAT_RGB565; break;
 			case 15: fmt = SDL_PIXELFORMAT_ARGB1555; break;
 		}
@@ -680,12 +679,9 @@ void SDLFB::ResetSDLRenderer ()
 		{
 			NotPaletted = true;
 
-			Uint32 format;
-			SDL_QueryTexture(Texture, &format, NULL, NULL, NULL);
-
 			Uint32 Rmask, Gmask, Bmask, Amask;
 			int bpp;
-			SDL_PixelFormatEnumToMasks(format, &bpp, &Rmask, &Gmask, &Bmask, &Amask);
+			SDL_GetMasksForPixelFormat(fmt, &bpp, &Rmask, &Gmask, &Bmask, &Amask);
 			GPfx.SetFormat (bpp, Rmask, Gmask, Bmask);
 		}
 	}
@@ -693,12 +689,12 @@ void SDLFB::ResetSDLRenderer ()
 	{
 		Surface = SDL_GetWindowSurface (Screen);
 
-		if (Surface->format->palette == NULL)
+		/*if (Surface->format->palette == NULL)
 		{
 			NotPaletted = true;
 			GPfx.SetFormat (Surface->format->BitsPerPixel, Surface->format->Rmask, Surface->format->Gmask, Surface->format->Bmask);
 		}
-		else
+		else FIXME ADAM*/
 			NotPaletted = false;
 	}
 
@@ -709,7 +705,7 @@ void SDLFB::ResetSDLRenderer ()
 		int w, h;
 		SDL_GetWindowSize (Screen, &w, &h);
 		ScaleWithAspect (w, h, Width, Height);
-		SDL_RenderSetLogicalSize (Renderer, w, h);
+		SDL_SetRenderLogicalPresentation (Renderer, w, h, SDL_LOGICAL_PRESENTATION_INTEGER_SCALE);
 	}
 }
 

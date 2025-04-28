@@ -45,7 +45,7 @@ public:
 		CritSec = SDL_CreateMutex();
 		if (CritSec == NULL)
 		{
-			I_FatalError("Failed to create a critical section mutex.");
+			//I_FatalError("Failed to create a critical section mutex.");
 		}
 	}
 	~FInternalCriticalSection()
@@ -57,20 +57,20 @@ public:
 	}
 	void Enter()
 	{
-		if (SDL_mutexP(CritSec) != 0)
+		if (SDL_LockMutex(CritSec) != 0)
 		{
-			I_FatalError("Failed entering a critical section.");
+			//I_FatalError("Failed entering a critical section.");
 		}
 	}
 	void Leave()
 	{
-		if (SDL_mutexV(CritSec) != 0)
+		if (SDL_LockMutex(CritSec) != 0)
 		{
-			I_FatalError("Failed to leave a critical section.");
+			//I_FatalError("Failed to leave a critical section.");
 		}
 	}
 private:
-	SDL_mutex *CritSec;
+	SDL_Mutex *CritSec;
 };
 
 FInternalCriticalSection *CreateCriticalSection()

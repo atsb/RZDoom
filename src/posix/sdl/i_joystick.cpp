@@ -12,11 +12,11 @@ class SDLInputJoystick: public IJoystickConfig
 public:
 	SDLInputJoystick(int DeviceIndex) : DeviceIndex(DeviceIndex), Multiplier(1.0f)
 	{
-		Device = SDL_JoystickOpen(DeviceIndex);
+		Device = SDL_OpenJoystick(DeviceIndex);
 		if(Device != NULL)
 		{
-			NumAxes = SDL_JoystickNumAxes(Device);
-			NumHats = SDL_JoystickNumHats(Device);
+			NumAxes = SDL_GetNumJoystickAxes(Device);
+			NumHats = SDL_GetNumJoystickHats(Device);
 
 			SetDefaultConfig();
 		}
@@ -25,7 +25,7 @@ public:
 	{
 		if(Device != NULL)
 			M_SaveJoystickConfig(this);
-		SDL_JoystickClose(Device);
+		SDL_CloseJoystick(Device);
 	}
 
 	bool IsValid() const
@@ -35,7 +35,7 @@ public:
 
 	FString GetName()
 	{
-		return SDL_JoystickName(Device);
+		return SDL_GetJoystickName(Device);
 	}
 	float GetSensitivity()
 	{
@@ -145,7 +145,7 @@ public:
 		{
 			buttonstate = 0;
 
-			Axes[i].Value = SDL_JoystickGetAxis(Device, i)/32767.0;
+			Axes[i].Value = SDL_GetJoystickAxis(Device, i)/32767.0;
 			Axes[i].Value = Joy_RemoveDeadZone(Axes[i].Value, Axes[i].DeadZone, &buttonstate);
 
 			// Map button to axis
@@ -173,7 +173,7 @@ public:
 			AxisInfo &x = Axes[NumAxes + i*2];
 			AxisInfo &y = Axes[NumAxes + i*2 + 1];
 
-			buttonstate = SDL_JoystickGetHat(Device, i);
+			buttonstate = SDL_GetJoystickHat(Device, i);
 
 			// If we're going to assume that we can pass SDL's value into
 			// Joy_GenerateButtonEvents then we might as well assume the format here.
@@ -224,7 +224,7 @@ class SDLInputJoystickManager
 {
 public:
 	SDLInputJoystickManager()
-	{
+	{/* FIXME ADAM
 		for(int i = 0;i < SDL_NumJoysticks();i++)
 		{
 			SDLInputJoystick *device = new SDLInputJoystick(i);
@@ -232,7 +232,7 @@ public:
 				Joysticks.Push(device);
 			else
 				delete device;
-		}
+		}*/
 	}
 	~SDLInputJoystickManager()
 	{

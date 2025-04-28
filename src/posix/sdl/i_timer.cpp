@@ -28,14 +28,14 @@ void I_SelectTimer();
 // [RH] Returns time in milliseconds
 unsigned int I_MSTime (void)
 {
-	unsigned int time = SDL_GetTicks64 ();
+	unsigned int time = SDL_GetTicks ();
 	return time - BaseTime;
 }
 
 // Exactly the same thing, but based does no modification to the time.
 unsigned int I_FPSTime()
 {
-	return SDL_GetTicks64();
+	return SDL_GetTicks();
 }
 
 //
@@ -55,7 +55,7 @@ int I_GetTimePolled (bool saveMS)
 		return TicFrozen;
 	}
 
-	DWORD tm = SDL_GetTicks64();
+	DWORD tm = SDL_GetTicks();
 
 	if (saveMS)
 	{
@@ -138,7 +138,7 @@ void I_HandleAlarm (int sig)
 {
 	if(!TicFrozen)
 		tics++;
-	sig_start = SDL_GetTicks64();
+	sig_start = SDL_GetTicks();
 	SEMAPHORE_SIGNAL(timerWait)
 }
 
@@ -180,7 +180,7 @@ void I_SelectTimer()
 // Returns the fractional amount of a tic passed since the most recent tic
 fixed_t I_GetTimeFrac (uint32 *ms)
 {
-	DWORD now = SDL_GetTicks64 ();
+	DWORD now = SDL_GetTicks ();
 	if (ms) *ms = TicStart + (1000 / TICRATE);
 	if (TicStart == 0)
 	{
@@ -195,9 +195,6 @@ fixed_t I_GetTimeFrac (uint32 *ms)
 
 void I_InitTimer ()
 {
-	if(SDL_InitSubSystem(SDL_INIT_TIMER) < 0)
-		I_FatalError("Could not initialize SDL timers:\n%s\n", SDL_GetError());
-
 	I_GetTime = I_GetTimeSelect;
 	I_WaitForTic = I_WaitForTicSelect;
 	I_FreezeTime = I_FreezeTimeSelect;
@@ -205,5 +202,5 @@ void I_InitTimer ()
 
 void I_ShutdownTimer ()
 {
-	SDL_QuitSubSystem(SDL_INIT_TIMER);
+
 }

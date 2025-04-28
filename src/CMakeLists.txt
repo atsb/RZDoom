@@ -99,9 +99,9 @@ else( WIN32 )
 
 	endif( APPLE )
 	
-	find_package( SDL2 REQUIRED )
-	include_directories( "${SDL2_INCLUDE_DIR}" )
-	set( ZDOOM_LIBS ${ZDOOM_LIBS} "${SDL2_LIBRARY}" )
+	find_package( SDL3 REQUIRED )
+	include_directories( "/usr/local/include/SDL3/" )
+	set( ZDOOM_LIBS ${ZDOOM_LIBS} "/usr/local/lib64/libSDL3.so" )
 
 	find_path( FPU_CONTROL_DIR fpu_control.h )
 	if( FPU_CONTROL_DIR )
@@ -304,23 +304,6 @@ else( NOT DYN_FLUIDSYNTH )
 endif( NOT DYN_FLUIDSYNTH )
 
 # Start defining source files for ZDoom
-set( PLAT_WIN32_SOURCES
-	win32/eaxedit.cpp
-	win32/hardware.cpp
-	win32/helperthread.cpp
-	win32/i_cd.cpp
-	win32/i_crash.cpp
-	win32/i_input.cpp
-	win32/i_keyboard.cpp
-	win32/i_mouse.cpp
-	win32/i_dijoy.cpp
-	win32/i_rawps2.cpp
-	win32/i_xinput.cpp
-	win32/i_main.cpp
-	win32/i_movie.cpp
-	win32/i_system.cpp
-	win32/st_start.cpp
-	win32/win32video.cpp )
 set( PLAT_POSIX_SOURCES
 	posix/i_cd.cpp
 	posix/i_movie.cpp
@@ -342,7 +325,7 @@ set( PLAT_OSX_SOURCES
 
 if( WIN32 )
 	set( SYSTEM_SOURCES_DIR win32 )
-	set( SYSTEM_SOURCES ${PLAT_WIN32_SOURCES} )
+	set( SYSTEM_SOURCES )
 	set( OTHER_SYSTEM_SOURCES ${PLAT_POSIX_SOURCES} ${PLAT_SDL_SOURCES} ${PLAT_OSX_SOURCES})
 	
 	if( ZD_CMAKE_COMPILER_IS_GNUCXX_COMPATIBLE )
@@ -358,7 +341,7 @@ elseif( APPLE )
 	set( SYSTEM_SOURCES_DIR posix posix/sdl )
 	set( SYSTEM_SOURCES ${PLAT_SDL_SOURCES} )
 	set( PLAT_OSX_SOURCES ${PLAT_OSX_SOURCES} posix/sdl/i_system.mm )
-	set( OTHER_SYSTEM_SOURCES ${PLAT_WIN32_SOURCES} )
+	set( OTHER_SYSTEM_SOURCES )
 	set( SYSTEM_SOURCES ${SYSTEM_SOURCES} ${PLAT_POSIX_SOURCES} ${PLAT_OSX_SOURCES} "${FMOD_LIBRARY}" )
 
 	set_source_files_properties( posix/osx/rzdoom.icns PROPERTIES MACOSX_PACKAGE_LOCATION Resources )
@@ -367,7 +350,7 @@ elseif( APPLE )
 else( WIN32 )
 	set( SYSTEM_SOURCES_DIR posix posix/sdl )
 	set( SYSTEM_SOURCES ${PLAT_POSIX_SOURCES} ${PLAT_SDL_SOURCES} )
-	set( OTHER_SYSTEM_SOURCES ${PLAT_WIN32_SOURCES} ${PLAT_OSX_SOURCES} )
+	set( OTHER_SYSTEM_SOURCES ${PLAT_OSX_SOURCES} )
 endif( WIN32 )
 
 add_custom_command( OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/xlat_parser.c ${CMAKE_CURRENT_BINARY_DIR}/xlat_parser.h
