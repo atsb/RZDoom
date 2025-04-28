@@ -705,15 +705,31 @@ void SDLFB::ResetSDLRenderer ()
 	}
 	else
 	{
-		Surface = SDL_GetWindowSurface (Screen);
-
-		/*if (Surface->format->palette == NULL)
-		{
+		Surface = SDL_GetWindowSurface(Screen);
+		if (!Surface) {
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "SDL_GetWindowSurface failed: %s", SDL_GetError());
 			NotPaletted = true;
-			GPfx.SetFormat (Surface->format->BitsPerPixel, Surface->format->Rmask, Surface->format->Gmask, Surface->format->Bmask);
 		}
-		else FIXME ADAM*/
-			NotPaletted = false;
+		else {
+			if (SDL_GetSurfacePalette(Surface) == NULL)
+			{
+				NotPaletted = true;
+				SDL_PixelFormat surface_fmt = Surface->format;
+				const SDL_PixelFormatDetails* details = SDL_GetPixelFormatDetails(surface_fmt);
+
+				if (details) {
+					GPfx.SetFormat(details->bits_per_pixel, details->Rmask, details->Gmask, details->Bmask);
+				}
+				else {
+					SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "SDL_GetPixelFormatDetails failed for format enum %d (%s)",
+						surface_fmt, SDL_GetPixelFormatName(surface_fmt));
+				}
+			}
+			else
+			{
+				NotPaletted = false;
+			}
+		}
 	}
 
 	// In fullscreen, set logical size according to animorphic ratio.
