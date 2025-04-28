@@ -546,43 +546,61 @@ void SDLFB::Update ()
 	}
 }
 
-void SDLFB::UpdateColors ()
+void SDLFB::UpdateColors()
 {
 	if (NotPaletted)
 	{
-		PalEntry palette[256];
-		
+		PalEntry localPalette[256];
+
 		for (int i = 0; i < 256; ++i)
 		{
-			palette[i].r = GammaTable[0][SourcePalette[i].r];
-			palette[i].g = GammaTable[1][SourcePalette[i].g];
-			palette[i].b = GammaTable[2][SourcePalette[i].b];
+			localPalette[i].r = GammaTable[0][SourcePalette[i].r];
+			localPalette[i].g = GammaTable[1][SourcePalette[i].g];
+			localPalette[i].b = GammaTable[2][SourcePalette[i].b];
 		}
+
 		if (FlashAmount)
 		{
-			DoBlending (palette, palette,
-				256, GammaTable[0][Flash.r], GammaTable[1][Flash.g], GammaTable[2][Flash.b],
+			DoBlending(localPalette, localPalette, 256,
+				GammaTable[0][Flash.r], GammaTable[1][Flash.g], GammaTable[2][Flash.b],
 				FlashAmount);
 		}
-		GPfx.SetPalette (palette);
+		GPfx.SetPalette(localPalette);
 	}
 	else
 	{
+		if (!Surface) {
+			SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "SDLFB::UpdateColors: Target SDL_Surface is NULL.");
+			return;
+		}
+
+		SDL_Palette* palette = SDL_GetSurfacePalette(Surface);
+
+		if (!palette) {
+			SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "SDLFB::UpdateColors: SDL_GetSurfacePalette failed or Surface has no palette.");
+			return;
+		}
+
 		SDL_Color colors[256];
-		
+
 		for (int i = 0; i < 256; ++i)
 		{
 			colors[i].r = GammaTable[0][SourcePalette[i].r];
 			colors[i].g = GammaTable[1][SourcePalette[i].g];
 			colors[i].b = GammaTable[2][SourcePalette[i].b];
+			colors[i].a = 255;
 		}
+
 		if (FlashAmount)
 		{
-			DoBlending ((PalEntry *)colors, (PalEntry *)colors,
-				256, GammaTable[2][Flash.b], GammaTable[1][Flash.g], GammaTable[0][Flash.r],
+			DoBlending((PalEntry*)colors, (PalEntry*)colors, 256,
+				GammaTable[2][Flash.b], GammaTable[1][Flash.g], GammaTable[0][Flash.r],
 				FlashAmount);
 		}
-		//SDL_SetPaletteColors (Surface->format->palette, colors, 0, 256); FIXME ADAM
+		if (SDL_SetPaletteColors(palette, colors, 0, 256) < 0)
+		{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "SDL_SetPaletteColors failed: %s", SDL_GetError());
+		}
 	}
 }
 
