@@ -39,3 +39,6 @@
 /build
 *.tlog
 /bzip2/x64
+*.tlog
+/bzip2/x64
+*.log
