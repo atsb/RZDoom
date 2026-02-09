@@ -42,3 +42,17 @@
 *.tlog
 /bzip2/x64
 *.log
+*.log
+*.tlog
+*.tlog
+*.tlog
+/game-music-emu/x64
+/game-music-emu/x64
+/gdtoa/x64
+/tools/fixrtext/Release
+/tools/lemon/Build
+/tools/re2c/Build
+/tools/updaterevision/x64
+/x64
+/dumb/vc6
+/bzip2/x64
